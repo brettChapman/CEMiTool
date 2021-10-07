@@ -1,0 +1,50 @@
+chr1H	example_gff	pseudogene	45305	54666	2723.145	-	.	ID=Test_Gene_1H01G000100
+chr1H	example_gff	mRNA	45305	54666	.	-	.	ID=Test_Gene_1H01G000100.1;Parent=Test_Gene_1H01G000100
+chr1H	example_gff	exon	45305	45475	.	-	.	ID=Test_Gene_1H01G000100.1_exon_10;Parent=Test_Gene_1H01G000100.1
+chr1H	example_gff	exon	45647	45784	.	-	.	ID=Test_Gene_1H01G000100.1_exon_9;Parent=Test_Gene_1H01G000100.1
+chr1H	example_gff	exon	45956	46171	.	-	.	ID=Test_Gene_1H01G000100.1_exon_8;Parent=Test_Gene_1H01G000100.1
+chr1H	example_gff	exon	47278	47351	.	-	.	ID=Test_Gene_1H01G000100.1_exon_7;Parent=Test_Gene_1H01G000100.1
+chr1H	example_gff	exon	47446	47512	.	-	.	ID=Test_Gene_1H01G000100.1_exon_6;Parent=Test_Gene_1H01G000100.1
+chr1H	example_gff	exon	53620	53702	.	-	.	ID=Test_Gene_1H01G000100.1_exon_5;Parent=Test_Gene_1H01G000100.1
+chr1H	example_gff	exon	53809	53912	.	-	.	ID=Test_Gene_1H01G000100.1_exon_4;Parent=Test_Gene_1H01G000100.1
+chr1H	example_gff	exon	53927	54228	.	-	.	ID=Test_Gene_1H01G000100.1_exon_3;Parent=Test_Gene_1H01G000100.1
+chr1H	example_gff	exon	54354	54599	.	-	.	ID=Test_Gene_1H01G000100.1_exon_2;Parent=Test_Gene_1H01G000100.1
+chr1H	example_gff	exon	54629	54666	.	-	.	ID=Test_Gene_1H01G000100.1_exon_1;Parent=Test_Gene_1H01G000100.1
+chr1H	example_gff	gene	285239	285893	1070.134	-	.	ID=Test_Gene_1H01G000200;OGID=OG0003646;AHRD Description=B3 domain-containing protein;AHRD Quality Score=2;TE-related=0;PFAM ID=PF02362;GO ID=GO:0003677,GO:0005634,GO:0006351,GO:0006355
+chr1H	example_gff	mRNA	285239	285893	.	-	.	ID=Test_Gene_1H01G000200.1;Parent=Test_Gene_1H01G000200
+chr1H	example_gff	exon	285239	285492	.	-	.	ID=Test_Gene_1H01G000200.1_exon_2;Parent=Test_Gene_1H01G000200.1
+chr1H	example_gff	exon	285569	285893	.	-	.	ID=Test_Gene_1H01G000200.1_exon_1;Parent=Test_Gene_1H01G000200.1
+chr1H	example_gff	CDS	285239	285492	.	-	2	Parent=Test_Gene_1H01G000200.1
+chr1H	example_gff	CDS	285569	285893	.	-	0	Parent=Test_Gene_1H01G000200.1
+chr1H	example_gff	gene	379626	381772	2139.031	+	.	ID=Test_Gene_1H01G000300;OGID=OG0028375;AHRD Description=Fatty acyl-CoA reductase;AHRD Quality Score=3;TE-related=0;PFAM ID=PF03015,PF07993;GO ID=GO:0006629,GO:0016020,GO:0016021,GO:0016491,GO:0055114,GO:0080019,GO:0102965
+chr1H	example_gff	mRNA	379626	381772	.	+	.	ID=Test_Gene_1H01G000300.1;Parent=Test_Gene_1H01G000300
+chr1H	example_gff	exon	379626	379885	.	+	.	ID=Test_Gene_1H01G000300.1_exon_1;Parent=Test_Gene_1H01G000300.1
+chr1H	example_gff	exon	380345	380512	.	+	.	ID=Test_Gene_1H01G000300.1_exon_2;Parent=Test_Gene_1H01G000300.1
+chr1H	example_gff	exon	380603	380684	.	+	.	ID=Test_Gene_1H01G000300.1_exon_3;Parent=Test_Gene_1H01G000300.1
+chr1H	example_gff	exon	381118	381482	.	+	.	ID=Test_Gene_1H01G000300.1_exon_4;Parent=Test_Gene_1H01G000300.1
+chr1H	example_gff	exon	381562	381772	.	+	.	ID=Test_Gene_1H01G000300.1_exon_5;Parent=Test_Gene_1H01G000300.1
+chr1H	example_gff	CDS	379626	379885	.	+	0	Parent=Test_Gene_1H01G000300.1
+chr1H	example_gff	CDS	380345	380512	.	+	1	Parent=Test_Gene_1H01G000300.1
+chr1H	example_gff	CDS	380603	380684	.	+	1	Parent=Test_Gene_1H01G000300.1
+chr1H	example_gff	CDS	381118	381482	.	+	0	Parent=Test_Gene_1H01G000300.1
+chr1H	example_gff	CDS	381562	381772	.	+	1	Parent=Test_Gene_1H01G000300.1
+chr1H	example_gff	gene	415249	415524	560.205	+	.	ID=Test_Gene_1H01G000400;OGID=OG0005246;AHRD Description=Albumin 1;AHRD Quality Score=1;TE-related=0;GO ID=GO:0006952
+chr1H	example_gff	mRNA	415249	415524	.	+	.	ID=Test_Gene_1H01G000400.1;Parent=Test_Gene_1H01G000400
+chr1H	example_gff	exon	415249	415524	.	+	.	ID=Test_Gene_1H01G000400.1_exon_1;Parent=Test_Gene_1H01G000400.1
+chr1H	example_gff	CDS	415249	415524	.	+	0	Parent=Test_Gene_1H01G000400.1
+chr1H	example_gff	gene	418902	419494	834.843	-	.	ID=Test_Gene_1H01G000500;OGID=OG0003647;AHRD Description=Dirigent protein;AHRD Quality Score=3;TE-related=0;PFAM ID=PF01419;GO ID=GO:0005576,GO:0030246,GO:0048046
+chr1H	example_gff	mRNA	418902	419494	.	-	.	ID=Test_Gene_1H01G000500.1;Parent=Test_Gene_1H01G000500
+chr1H	example_gff	exon	418902	419138	.	-	.	ID=Test_Gene_1H01G000500.1_exon_2;Parent=Test_Gene_1H01G000500.1
+chr1H	example_gff	exon	419291	419494	.	-	.	ID=Test_Gene_1H01G000500.1_exon_1;Parent=Test_Gene_1H01G000500.1
+chr1H	example_gff	CDS	418902	419138	.	-	0	Parent=Test_Gene_1H01G000500.1
+chr1H	example_gff	CDS	419291	419494	.	-	0	Parent=Test_Gene_1H01G000500.1
+chr1H	example_gff	gene	503987	504481	767.561	+	.	ID=Test_Gene_1H01G000600;OGID=OG0000001;AHRD Description=myosin heavy chain, embryonic smooth protein;AHRD Quality Score=1;TE-related=0
+chr1H	example_gff	mRNA	503987	504481	.	+	.	ID=Test_Gene_1H01G000600.1;Parent=Test_Gene_1H01G000600
+chr1H	example_gff	exon	503987	504040	.	+	.	ID=Test_Gene_1H01G000600.1_exon_1;Parent=Test_Gene_1H01G000600.1
+chr1H	example_gff	exon	504128	504481	.	+	.	ID=Test_Gene_1H01G000600.1_exon_2;Parent=Test_Gene_1H01G000600.1
+chr1H	example_gff	CDS	503987	504040	.	+	0	Parent=Test_Gene_1H01G000600.1
+chr1H	example_gff	CDS	504128	504481	.	+	0	Parent=Test_Gene_1H01G000600.1
+chr1H	example_gff	gene	852816	853448	1077.100	-	.	ID=Test_Gene_1H01G000700;OGID=OG0038846;AHRD Description=Retrovirus-related Pol polyprotein from transposon TNT 1-94;AHRD Quality Score=3;TE-related=1;PFAM ID=PF13961,PF14223
+chr1H	example_gff	mRNA	852816	853448	.	-	.	ID=Test_Gene_1H01G000700.1;Parent=Test_Gene_1H01G000700
+chr1H	example_gff	exon	852816	853448	.	-	.	ID=Test_Gene_1H01G000700.1_exon_1;Parent=Test_Gene_1H01G000700.1
+chr1H	example_gff	CDS	852816	853448	.	-	0	Parent=Test_Gene_1H01G000700.1
