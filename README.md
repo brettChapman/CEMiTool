@@ -11,7 +11,9 @@ The Dockerfile has been modified by Brett Chapman to utilise this GitHub repo
 New parameters have been added to the CEMiTool.R executable in exec/ and the script has been significantly updated.
 
 Usage:
-```--top_hubs N (default: 10)``` to output the top N hub genes to use for the basis of the interaction network, list of hub genes per module, and a filtered expression matrix is also output for use in other tools if desired.
+```--top_hubs N (default: 10)``` to output a list of the top N hub genes per module, and a filtered expression matrix is also output for use in other tools if desired.
+```--top_hubs_interact (default: 10)``` to use the top N hub genes as the basis of the interaction network.
+
 
 Another parameter included which was left out from the original executable is ```--cor-function=<corfunc>```
 

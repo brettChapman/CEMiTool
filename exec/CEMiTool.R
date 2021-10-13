@@ -3,7 +3,7 @@
 "CEMiTool - Co-Expression Modules identification Tool
 Modified by Brett Chapman 23rd September 2021
 
-Usage: cemitool.R EXPRSFILE  --output=<dir> [--sample-annot=<annot> --samples-column=<samplecol> --class-column=<classcol> --no-filter (--filter-pval=<p>|--ngenes=<ngenes>) --apply_vst --eps --network-type=<nettype> --tom-type=<tomtype> --interactions=<inter> --pathways=<gmt> --ora-pvalue=<p> --cor-method=<cor> --cor-function=<corfunc> --no-merge --rank-method=<rank> --min-module-size=<min> --diss-thresh=<thresh> --center-func=<fun> --directed --top_hubs=<N> --verbose]
+Usage: cemitool.R EXPRSFILE  --output=<dir> [--sample-annot=<annot> --samples-column=<samplecol> --class-column=<classcol> --no-filter (--filter-pval=<p>|--ngenes=<ngenes>) --apply_vst --eps --network-type=<nettype> --tom-type=<tomtype> --interactions=<inter> --pathways=<gmt> --ora-pvalue=<p> --cor-method=<cor> --cor-function=<corfunc> --no-merge --rank-method=<rank> --min-module-size=<min> --diss-thresh=<thresh> --center-func=<fun> --directed --top_hubs=<N> --top_hubs_interact=<N> --verbose]
 
 Input:
   EXPRSFILE                         a normalized expression file .tsv format
@@ -32,7 +32,8 @@ Options:
   --diss-thresh=<thresh>             module merging correlation threshold for eigengene similarity [default: 0.8]
   --center-func=<fun>                metric used for centering [default: mean]
   --directed                         the interactions are directed
-  --top_hubs=<N>		     The top N hub genes to use for the basis of the interaction network, list of hub genes per module, and expression matrix [default: 10] 
+  --top_hubs=<N>		     The top N hub genes to list per module and to output as an expression matrix [default: 10] 
+  --top_hubs_interact=<N>	     The top N hub genes to use for the basis of the interaction network [default: 10]
   -o <dir> --output=<dir>            output directory
   -v --verbose                       display progress messages
 
@@ -188,6 +189,16 @@ if (!interactive()) {
     	top_hubs <- 10
     }
 
+    #The top N hub interaction genes to output
+    if("top_hubs_interact" %in% names(parameters)){
+        if(p$verbose){
+            message("Reading top hubs interaction ...")
+        }
+        top_hubs_interact <- parameters[["top_hubs_interact"]]
+    } else {
+        top_hubs_interact <- 10
+    }
+
     # Increase gene label overlaps to infinity
     options(ggrepel.max.overlaps = Inf)
 
@@ -202,7 +213,7 @@ if (!interactive()) {
 	    cem <- find_modules(cem)
 
 	    # Get top N hub genes to use as the interaction network
-	    network <- get_hubs(cem,top_hubs)
+	    network <- get_hubs(cem,top_hubs_interact)
 
 	    for(i in 1:length(network)){
             	if(i == 1){
