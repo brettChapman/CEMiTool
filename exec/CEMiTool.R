@@ -265,7 +265,7 @@ if (!interactive()) {
 			    hubs <- as.data.frame(names(x[[i]]))
 			    top_N_hub_list <- as.list(names(x[[i]]))
 		    } else {
-			    hubs <- cbind(hubs, as.data.frame(names(x[[i]])))
+			    hubs <- merge(data.frame(hubs, row.names=NULL), data.frame(as.data.frame(names(x[[i]])), row.names=NULL), by = 0, all = TRUE)[-1]
 			    top_N_hub_list <- c(top_N_hub_list, as.list(names(x[[i]])))
 		    }
 	    }
@@ -298,7 +298,7 @@ if (!interactive()) {
                     	hubs <- as.data.frame(names(x[[i]]))
 		    	top_N_hub_list <- as.list(names(x[[i]]))
 		    } else {
-                    	hubs <- cbind(hubs, as.data.frame(names(x[[i]])))
+			hubs <- merge(data.frame(hubs, row.names=NULL), data.frame(as.data.frame(names(x[[i]])), row.names=NULL), by = 0, all = TRUE)[-1]
 		    	top_N_hub_list <- c(top_N_hub_list, as.list(names(x[[i]])))
 		    }
 	    }
