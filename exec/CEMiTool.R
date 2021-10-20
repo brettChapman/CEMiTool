@@ -263,14 +263,12 @@ if (!interactive()) {
 	    for(i in 1:length(x)){
 		    if(i == 1){
 			    hubs <- as.data.frame(names(x[[i]]))
-			    top_N_hub_list <- as.list(names(x[[i]]))
 		    } else {
 			    hubs <- merge(data.frame(hubs, row.names=NULL), data.frame(as.data.frame(names(x[[i]])), row.names=NULL), by = 0, all = TRUE)[-1]
-			    top_N_hub_list <- c(top_N_hub_list, as.list(names(x[[i]])))
 		    }
 	    }
 	    colnames(hubs) <- names(x)
-	    top_N_hub_list <- do.call(rbind, top_N_hub_list)
+	    top_N_hub_list <- unlist(hubs)
 
 	    # extract out expression data, transform and slice out the top hub genes
 	    expr_transformed <- filter_genes(cem@expression, apply_vst = cem@parameters$apply_vst)
@@ -296,14 +294,12 @@ if (!interactive()) {
 	    for(i in 1:length(x)){
 		    if(i == 1){
                     	hubs <- as.data.frame(names(x[[i]]))
-		    	top_N_hub_list <- as.list(names(x[[i]]))
 		    } else {
 			hubs <- merge(data.frame(hubs, row.names=NULL), data.frame(as.data.frame(names(x[[i]])), row.names=NULL), by = 0, all = TRUE)[-1]
-		    	top_N_hub_list <- c(top_N_hub_list, as.list(names(x[[i]])))
 		    }
 	    }
 	    colnames(hubs) <- names(x)
-	    top_N_hub_list <- do.call(rbind, top_N_hub_list)
+	    top_N_hub_list <- unlist(hubs)
 
 	    # extract out expression data, transform and slice out the top hub genes
             expr_transformed <- filter_genes(cem@expression, apply_vst = cem@parameters$apply_vst)
