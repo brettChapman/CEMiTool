@@ -242,7 +242,7 @@ if (!interactive()) {
             	if(i == 1){
 			hub_network <- na.omit(as.data.frame(names(network[[i]])))
             	} else {
-			xx <- na.omit(as.data.frame(names(x[[i]])))
+			xx <- na.omit(as.data.frame(names(network[[i]])))
     			hub_network <- cbindPad(hub_network, xx)
             	}
 	    }
