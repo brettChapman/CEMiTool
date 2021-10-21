@@ -207,6 +207,29 @@ if (!interactive()) {
         message("Running CEMiTool ...")
     }
 
+    cbindPad <- function(...){
+    args <- list(...)
+    n <- sapply(args,nrow)
+    mx <- max(n)
+    pad <- function(x, mx){
+    	if (nrow(x) < mx){
+        	nms <- colnames(x)
+        	padTemp <- matrix(NA, mx - nrow(x), ncol(x))
+        	colnames(padTemp) <- nms
+        	if (ncol(x)==0) {
+        		return(padTemp)
+        	} else {
+        		return(rbind(x,padTemp))
+          	}
+    	}
+    	else{
+       		return(x)
+    	}
+    }		
+    rs <- lapply(args,pad,mx)
+    return(do.call(cbind,rs))
+    }
+
     # If true run a first and then second pass of cemitool using the top N hub genes to construct an interaction network
     if(hub_interact == TRUE){
 	    cem <- do.call(cemitool, p)
@@ -217,9 +240,10 @@ if (!interactive()) {
 
 	    for(i in 1:length(network)){
             	if(i == 1){
-			hub_network <- as.data.frame(names(network[[i]]))
+			hub_network <- ana.omit(s.data.frame(names(network[[i]])))
             	} else {
-			hub_network <- merge(data.frame(hub_network, row.names=NULL), data.frame(as.data.frame(names(network[[i]])), row.names=NULL), by = 0, all = TRUE)[-1]
+			xx <- na.omit(as.data.frame(names(x[[i]])))
+    			hub_network <- cbindPad(hub_network, xx)
             	}
 	    }
 	    
@@ -262,13 +286,14 @@ if (!interactive()) {
 
 	    for(i in 1:length(x)){
 		    if(i == 1){
-			    hubs <- as.data.frame(names(x[[i]]))
+			hubs <- na.omit(as.data.frame(names(x[[i]])))
 		    } else {
-			    hubs <- merge(data.frame(hubs, row.names=NULL), data.frame(as.data.frame(names(x[[i]])), row.names=NULL), by = 0, all = TRUE)[-1]
+			xx <- na.omit(as.data.frame(names(x[[i]])))
+			hubs <- cbindPad(hubs, xx)
 		    }
 	    }
 	    colnames(hubs) <- names(x)
-	    top_N_hub_list <- unlist(hubs)
+	    top_N_hub_list <- na.omit(unlist(hubs))
 
 	    # extract out expression data, transform and slice out the top hub genes
 	    expr_transformed <- filter_genes(cem@expression, apply_vst = cem@parameters$apply_vst)
@@ -293,13 +318,14 @@ if (!interactive()) {
 	    
 	    for(i in 1:length(x)){
 		    if(i == 1){
-                    	hubs <- as.data.frame(names(x[[i]]))
+                    	hubs <- na.omit(as.data.frame(names(x[[i]])))
 		    } else {
-			hubs <- merge(data.frame(hubs, row.names=NULL), data.frame(as.data.frame(names(x[[i]])), row.names=NULL), by = 0, all = TRUE)[-1]
+			xx <- na.omit(as.data.frame(names(x[[i]])))
+			hubs <- cbindPad(hubs, xx)
 		    }
 	    }
 	    colnames(hubs) <- names(x)
-	    top_N_hub_list <- unlist(hubs)
+	    top_N_hub_list <- na.omit(unlist(hubs))
 
 	    # extract out expression data, transform and slice out the top hub genes
             expr_transformed <- filter_genes(cem@expression, apply_vst = cem@parameters$apply_vst)
