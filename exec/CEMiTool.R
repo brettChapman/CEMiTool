@@ -71,6 +71,8 @@ if (!interactive()) {
 
     library(ggplot2)
 
+    library(dplyr)
+
     ## RUN
     library("CEMiTool")
 
@@ -240,9 +242,11 @@ if (!interactive()) {
 
 	    for(i in 1:length(network)){
             	if(i == 1){
-			hub_network <- head(na.omit(as.data.frame(names(network[[i]]))),top_hubs_interact)
+			hub_network <- na.omit(as.data.frame(names(network[[i]])))
+			hub_network <- hub_network %>% slice_head(n = top_hubs_interact)
             	} else {
-			xx <- head(na.omit(as.data.frame(names(network[[i]]))),top_hubs_interact)
+			xx <- na.omit(as.data.frame(names(network[[i]])))
+			xx <- xx %>% slice_head(n = top_hubs_interact)
     			hub_network <- cbindPad(hub_network, xx)
             	}
 	    }
@@ -286,9 +290,11 @@ if (!interactive()) {
 
 	    for(i in 1:length(x)){
 		    if(i == 1){
-			hubs <- head(na.omit(as.data.frame(names(x[[i]]))),top_hubs)
+			hubs <- na.omit(as.data.frame(names(x[[i]])))
+			hubs <- hubs %>% slice_head(n = top_hubs)
 		    } else {
-			xx <- head(na.omit(as.data.frame(names(x[[i]]))),top_hubs)
+			xx <- na.omit(as.data.frame(names(x[[i]])))
+			xx <- xx %>% slice_head(n = top_hubs)
 			hubs <- cbindPad(hubs, xx)
 		    }
 	    }
@@ -318,9 +324,11 @@ if (!interactive()) {
 	    
 	    for(i in 1:length(x)){
 		    if(i == 1){
-                    	hubs <- head(na.omit(as.data.frame(names(x[[i]]))),top_hubs)
+                    	hubs <- na.omit(as.data.frame(names(x[[i]])))
+			hubs <- hubs %>% slice_head(n = top_hubs)
 		    } else {
-			xx <- head(na.omit(as.data.frame(names(x[[i]]))),top_hubs)
+			xx <- na.omit(as.data.frame(names(x[[i]])))
+			xx <- xx %>% slice_head(n = top_hubs)
 			hubs <- cbindPad(hubs, xx)
 		    }
 	    }
