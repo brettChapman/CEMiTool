@@ -186,9 +186,9 @@ if (!interactive()) {
         if(p$verbose){
             message("Reading top hubs ...")
         }
-        top_hubs <- parameters[["top_hubs"]]
+        top_hubs <- as.numeric(parameters[["top_hubs"]])
     } else {
-    	top_hubs <- 10
+    	top_hubs <- as.numeric(10)
     }
 
     #The top N hub interaction genes to output
@@ -196,9 +196,9 @@ if (!interactive()) {
         if(p$verbose){
             message("Reading top hubs interaction ...")
         }
-        top_hubs_interact <- parameters[["top_hubs_interact"]]
+        top_hubs_interact <- as.numeric(parameters[["top_hubs_interact"]])
     } else {
-        top_hubs_interact <- 10
+        top_hubs_interact <- as.numeric(10)
     }
 
     # Increase gene label overlaps to infinity
