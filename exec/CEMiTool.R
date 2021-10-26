@@ -88,12 +88,12 @@ if (!interactive()) {
     }
 
     # remove rows with all 0 values
-    dat_expr <- data.table::fread(parameters[["exprsfile"]], data.table=FALSE)
-    dat_expr[dat_expr == 0] <- NA
-    dat_expr <- dat_expr %>% filter_all(any_vars(!is.na(.)))
-    dat_expr[is.na(dat_expr)] <- 0
+    #dat_expr <- data.table::fread(parameters[["exprsfile"]], data.table=FALSE)
+    #dat_expr[dat_expr == 0] <- NA
+    #dat_expr <- dat_expr %>% filter_all(any_vars(!is.na(.)))
+    #dat_expr[is.na(dat_expr)] <- 0
 
-    p$expr <- dat_expr
+    p$expr <- data.table::fread(parameters[["exprsfile"]], data.table=FALSE)
     
     # remove the column containing gene symbols
     if(p$verbose) {
