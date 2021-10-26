@@ -14,7 +14,6 @@ Usage:
 ```--top_hubs N (default: 10)``` to output a list of the top N hub genes per module, and a filtered expression matrix is also output for use in other tools if desired.
 ```--top_hubs_interact N (default: 10)``` to use the top N hub genes as the basis of the interaction network.
 
-
 Another parameter included which was left out from the original executable is ```--cor-function=<corfunc>```
 
 A python script has also been included which converts GFF to a GMT file if wanting to generate a gene set for ORA analysis. Modification of the python script may be nessary depending on the formatting of your GFF file. A test.gff file has been included in tests/.
