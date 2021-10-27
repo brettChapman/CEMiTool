@@ -276,6 +276,7 @@ setMethod('get_beta_data', signature('CEMiTool'),
                                         networkType=network_type, moreNetworkConcepts=TRUE,
                                         corFnc=get('cor_function'),
                                         corOptions=cor_options,
+					replaceMissingAdjacencies=TRUE,
                                         verbose=verbosity)
     return(beta_data)
 })
