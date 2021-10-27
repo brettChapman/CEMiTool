@@ -617,10 +617,9 @@ setMethod('get_mods', signature(cem='CEMiTool'),
     # Calculating Topological Overlap Matrix
     if (tom_type == 'signed') {
         tom <- WGCNA::TOMsimilarity(adj*sign(WGCNA::cor(expr_t, use=cor_options$use,
-							suppressTOMForZeroAdjacencies=TRUE,
                                                         method=cor_options$method)), TOMType=tom_type)
     } else if (tom_type == 'unsigned') {
-        tom <- WGCNA::TOMsimilarity(adj, suppressTOMForZeroAdjacencies=TRUE, TOMType=tom_type)
+        tom <- WGCNA::TOMsimilarity(adj, TOMType=tom_type)
     }
 
     # Determining TOM based distance measure

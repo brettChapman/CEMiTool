@@ -73,6 +73,8 @@ if (!interactive()) {
 
     library(dplyr)
 
+    library(Rfast)
+
     ## RUN
     library("CEMiTool")
 
@@ -87,13 +89,13 @@ if (!interactive()) {
         message("Reading expression file ...")
     }
 
-    # remove rows with all 0 values
-    #dat_expr <- data.table::fread(parameters[["exprsfile"]], data.table=FALSE)
-    #dat_expr[dat_expr == 0] <- NA
-    #dat_expr <- dat_expr %>% filter_all(any_vars(!is.na(.)))
-    #dat_expr[is.na(dat_expr)] <- 0
-
-    p$expr <- data.table::fread(parameters[["exprsfile"]], data.table=FALSE)
+    datExpr <- data.table::fread(parameters[["exprsfile"]], data.table=FALSE)
+    
+    # Remove row MAD values of 0 
+    dat_matrix <- as.matrix(datExpr)
+    xMAD <- rowMads(dat_matrix, na.rm=TRUE, method=c('median'))
+    filter <- unlist(lapply(xMAD, function(x) x > 0))
+    p$expr <- datExpr[filter, ]
     
     # remove the column containing gene symbols
     if(p$verbose) {
