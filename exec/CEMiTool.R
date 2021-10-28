@@ -92,7 +92,7 @@ if (!interactive()) {
     datExpr <- data.table::fread(parameters[["exprsfile"]], data.table=FALSE)
     
     # Remove row MAD values of 0 
-    dat_matrix <- as.matrix(datExpr)
+    dat_matrix <- as.matrix(as.data.frame(datExpr))
     xMAD <- rowMads(dat_matrix, na.rm=TRUE, method=c('median'))
     filter <- unlist(lapply(xMAD, function(x) x > 0))
     p$expr <- datExpr[filter, ]
