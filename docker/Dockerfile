@@ -21,4 +21,6 @@ RUN /usr/bin/Rscript docker/install-deps.R
 
 RUN R -e "library(devtools)"
 
+RUN R -e "BiocManager::install('Rfast')"
+
 RUN R -e "devtools::install_github('brettChapman/CEMiTool')"
