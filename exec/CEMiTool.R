@@ -89,14 +89,8 @@ if (!interactive()) {
         message("Reading expression file ...")
     }
 
-    datExpr <- data.table::fread(parameters[["exprsfile"]], data.table=FALSE)
-    
-    # Remove row MAD values of 0 
-    dat_matrix <- as.matrix(as.data.frame(datExpr))
-    xMAD <- rowMads(dat_matrix, na.rm=TRUE, method=c('median'))
-    filter <- unlist(lapply(xMAD, function(x) x > 0))
-    p$expr <- datExpr[filter, ]
-    
+    p$expr <- data.table::fread(parameters[["exprsfile"]], data.table=FALSE)
+  
     # remove the column containing gene symbols
     if(p$verbose) {
         message("Setting row names ...")
@@ -108,6 +102,11 @@ if (!interactive()) {
     if(!all(sapply(p$expr, is.numeric))){
         stop("Please make sure that your expression file have only numeric values.")
     }
+
+    # remove genes with median absolute deviations (MAD) of 0
+    xMAD <- rowMads(as.matrix(as.data.frame(p$expr)), na.rm=TRUE, method=c('median'))
+    filter <- unlist(lapply(xMAD, function(x) x > 0))
+    p$expr <- p$expr[filter, ]    
 
     # sample annotation file
     if("sample_annot" %in% names(parameters)){
