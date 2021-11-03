@@ -3,7 +3,7 @@
 "CEMiTool - Co-Expression Modules identification Tool
 Modified by Brett Chapman 23rd September 2021
 
-Usage: cemitool.R EXPRSFILE  --output=<dir> [--sample-annot=<annot> --samples-column=<samplecol> --class-column=<classcol> --no-filter (--filter-pval=<p>|--ngenes=<ngenes>) --apply_vst --eps --network-type=<nettype> --tom-type=<tomtype> --interactions=<inter> --pathways=<gmt> --ora-pvalue=<p> --cor-method=<cor> --cor-function=<corfunc> --no-merge --rank-method=<rank> --min-module-size=<min> --diss-thresh=<thresh> --center-func=<fun> --directed --top_hubs=<N> --top_hubs_interact=<N> --verbose]
+Usage: cemitool.R EXPRSFILE  --output=<dir> [--sample-annot=<annot> --samples-column=<samplecol> --class-column=<classcol> --no-filter (--filter-pval=<p>|--ngenes=<ngenes>) --apply_vst --eps --network-type=<nettype> --tom-type=<tomtype> --interactions=<inter> --pathways=<gmt> --ora-pvalue=<p> --cor-method=<cor> --cor-function=<corfunc> --no-merge --rank-method=<rank> --min-module-size=<min> --diss-thresh=<thresh> --set-beta=<N> --center-func=<fun> --directed --top_hubs=<N> --top_hubs_interact=<N> --verbose]
 
 Input:
   EXPRSFILE                         a normalized expression file .tsv format
@@ -30,6 +30,7 @@ Options:
   --rank-method=<rank>               rank method [default: mean]
   --min-module-size=<min>            minimum module size [default: 30]
   --diss-thresh=<thresh>             module merging correlation threshold for eigengene similarity [default: 0.8]
+  --set-beta=<N>		     Set the Beta value if it can not be determined automatically [default: 'None']
   --center-func=<fun>                metric used for centering [default: mean]
   --directed                         the interactions are directed
   --top_hubs=<N>		     The top N hub genes to list per module and to output as an expression matrix [default: 10] 
@@ -103,10 +104,10 @@ if (!interactive()) {
         stop("Please make sure that your expression file have only numeric values.")
     }
 
-    # remove genes with median absolute deviations (MAD) of 0
+    # Remove genes with MAD values of zero
     xMAD <- rowMads(as.matrix(as.data.frame(p$expr)), na.rm=TRUE, method=c('median'))
     filter <- unlist(lapply(xMAD, function(x) x > 0))
-    p$expr <- p$expr[filter, ]    
+    p$expr <- p$expr[filter, ]
 
     # sample annotation file
     if("sample_annot" %in% names(parameters)){
@@ -176,6 +177,13 @@ if (!interactive()) {
 
     # minimum size of a module
     p$min_ngen <- as.numeric(parameters[["min_module_size"]])
+
+    # set beta value
+    if("set_beta" %in% names(parameters)){
+	if(parameters[["set_beta"]] != 'None'){
+        	p$set_beta <- as.numeric(parameters[["set_beta"]])
+	}
+    }
 
     # dissimilarity threshold
     p$diss_thresh <- as.numeric(parameters[["diss_thresh"]])
