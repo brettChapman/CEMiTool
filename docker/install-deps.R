@@ -1,5 +1,5 @@
 install.packages('devtools')
 if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
-BiocManager::install(c('RcppZiggurat', 'preprocessCore', 'impute', 'clusterProfiler', 'Rfast', 'dplyr'))
+BiocManager::install(c('preprocessCore', 'impute', 'clusterProfiler', 'dplyr'))
 devtools::install_deps(dep=TRUE)
