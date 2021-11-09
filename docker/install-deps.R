@@ -1,5 +1,5 @@
 install.packages('devtools')
 if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
-BiocManager::install(c('preprocessCore', 'impute', 'clusterProfiler', 'dplyr'))
+BiocManager::install(c('dplyr', 'preprocessCore', 'impute', 'clusterProfiler'))
 devtools::install_deps(dep=TRUE)

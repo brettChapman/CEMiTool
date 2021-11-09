@@ -69,11 +69,11 @@ if (!interactive()) {
 
     print(parameters)
     
+    library(dplyr)
+
     library(parallel)
 
     library(ggplot2)
-
-    library(dplyr)
 
     ## RUN
     library("CEMiTool")
