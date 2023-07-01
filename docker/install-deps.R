@@ -1,5 +1,5 @@
-install.packages('devtools')
+install.packages('remotes')
 if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
 BiocManager::install(c('dplyr', 'preprocessCore', 'impute', 'clusterProfiler'))
-devtools::install_deps(dep=TRUE)
+remotes::install_deps(dep=TRUE)
