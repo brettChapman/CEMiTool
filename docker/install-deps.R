@@ -1,4 +1,5 @@
 install.packages('remotes')
+remotes::install_github("YuLab-SMU/ggtree")
 if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
 BiocManager::install(c('dplyr', 'preprocessCore', 'impute', 'clusterProfiler'))
